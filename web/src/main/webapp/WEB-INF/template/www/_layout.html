@@ -1,0 +1,26 @@
+#define layout()
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="language" content="en-us" />
+    <meta name="description" content="#(siteDescription)">
+    <meta name="keywords" content="#(siteSEO)" />
+    <title>#(siteTitle)</title>
+    #include("/WEB-INF/template/www/css.html")
+
+</head>
+
+<body >
+<input type="hidden" id="ctx" value="#(ctx)">
+###include("/WEB-INF/template/www/header.html")
+
+#include("/WEB-INF/template/www/js.html")
+#@content()
+
+</body>
+</html>
+#end

@@ -1,0 +1,28 @@
+
+商户：#(merName??'') 您的账户当前预存余额：#(feeAmount??'')。系统邮件，无须回复！<br>
+<table style="width: 100%;font-size: .938em;border-collapse: collapse;">
+    <thead>
+    <tr>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">清分日期</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">交易笔数</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">交易金额</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">手续费</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">出账金额</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">出账前预存余额</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">出账后预存余额</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">代缴手续费</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(clearDate??'')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(tradeCount??'')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(amountSum??'')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(amountFeeSum??'')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(amountOff??'')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(mfar.bAmount??'')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(mfar.aAmount??'')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(mfar.amount??'')</td>
+    </tr>
+    </tbody>
+</table>

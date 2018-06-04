@@ -1,0 +1,151 @@
+
+.fcc-refresh{
+    background: #FFF;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+.fcc-refresh-content{
+    color: #00000033;
+    cursor: pointer;
+    width:30px;
+    height:30px;
+    position: relative;
+    z-index: 9;
+}
+
+.fcc-refresh-content:hover{
+    color: #2b85e4;
+}
+
+.fcc-steps {
+    overflow: auto;
+    max-width: 450px;
+    min-width: 240px;
+    position: relative;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.fcc-steps:before{
+    content: "";
+    position: absolute;
+    left: 14px;
+    top: 0px;
+    height: 100%;
+    width: 2px;
+    background-color: #4285f4;
+}
+
+.fcc-steps:after {
+    content: "";
+    position: absolute;
+    left: 11px;
+    bottom: 0px;
+    height: 8px;
+    width: 8px;
+    background-color: #4285f4;
+    border-radius: 50%;
+}
+
+.fcc-steps-item {
+    margin: 0px 10px 15px 0px;
+    padding-left: 40px;
+    position: relative;
+}
+
+.fcc-steps-item~.fcc-steps-item{
+    margin-top: 15px;
+}
+
+.fcc-steps-item:before {
+    content: "\F120";
+    position: absolute;
+    left: 5px;
+    top: -3px;
+    height: 30px;
+    width: 30px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    font-family: Ionicons;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    line-height: 30px;
+}
+
+.fcc-steps-item.fcc-steps-success:before{
+    content: "\F120";
+    color: #19be6b;
+}
+
+.fcc-steps-item.fcc-steps-alert:before{
+    content: "\F100";
+    color: #2d8cf0;
+}
+
+.fcc-steps-item.fcc-steps-error:before{
+    content: "\F128";
+    color: #ed3f14;
+}
+
+.fcc-steps-head {
+    border-bottom: thin solid #d9d9d9;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.fcc-steps-head::after {
+    clear: both;
+    content: "0";
+    visibility: hidden;
+}
+
+.fcc-steps-head-inner {
+    float: left;
+    font-weight: bold;
+}
+
+.fcc-steps-main {
+    color: #2b85e4;
+    clear: both;
+    overflow: auto;
+}
+
+.fcc-steps-main-code-block {
+    width: 80px;
+    float: left;
+    position: absolute;
+    background: #fff;
+    z-index: 0;
+}
+
+.fcc-steps-main-msg {
+    white-space: normal;
+}
+
+.fcc-steps-main-code-block~.fcc-steps-main-block {
+    margin-left: 100px;
+}
+
+.fcc-steps-fs-15 {
+    font-size: 1.5em;
+    max-width: 300px;
+}
+
+.fcc-steps-main-intro-text {
+    color: #ccc;
+}
+
+.fcc-steps-main-text-danger {
+    color: #e4412b;
+}

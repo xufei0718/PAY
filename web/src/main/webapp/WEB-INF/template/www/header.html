@@ -1,0 +1,90 @@
+<header class="header-area" >
+    <div class="header-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-7">
+                    #if(cKit.isNotEmpty(rssList))
+                    <div class="rss-feed">
+                        <div id="rss-item" class="ticker">
+                            <ul>
+                                #for(rss : rssList)
+                                    <li>#(rss.txt)</li>
+                                #end
+                            </ul>
+                        </div>
+                     #end
+                </div>
+                <div class="col-md-6 col-sm-5 hidden-xs">
+                    <div class="top-info">
+                        #if(isNotBlank(siteEmail))
+                        <div class="single-info hidden-sm">
+                            <p><i class="fa fa-envelope-o"></i><a href="#">#(siteEmail)</a></p>
+                        </div>
+                        #end
+                        #if(isNotBlank(sitePhone))
+                        <div class="single-info hidden-sm">
+                            <p> <i class="fa fa-phone"></i>#(sitePhone)</p>
+                        </div>
+                        #end
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="main-menu">
+                        <nav class="navbar navbar-default">
+                            <div class="row">
+                                <div class="col-md-2 col-sm-12">
+                                    <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nb" aria-expanded="false">
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="#(ctx)/"><img  src="#(ctx)/static/logo.png" >
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-8 col-sm-12">
+                                    <div class="collapse navbar-collapse" id="nb">
+                                        #if(cKit.isNotEmpty(menuList))
+                                        <ul class="nav navbar-nav">
+                                            <li #if(currId=='-1') class=" smooth-menu active" #else class="smooth-menu" #end><a href="#(ctx)/">首页</a></li>
+                                            #for(x : menuList )
+                                            <li #if(currId==x.id+'') class=" smooth-menu active" #else class="smooth-menu" #end><a href="#(ctx)#(x.text)#(x.id)">#(x.title)</a></li>
+                                            #if(currId==x.id+'')
+                                            #set(currTitle=x.title)
+                                            #end
+                                            #end
+                                        </ul>
+                                        #end
+                                    </div>
+                                    <!-- navbar-collapse -->
+                                </div>
+                                <div class="col-md-2 hidden-sm hidden-xs">
+                                    <div class="menu-btn">
+                                        <a href="#" class="btn log-in">登录</a>
+                                        <a href="#" class="btn sign-up">注册</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div><!-- Main Menu End -->
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+
+

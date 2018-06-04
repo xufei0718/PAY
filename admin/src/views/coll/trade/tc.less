@@ -1,0 +1,72 @@
+@keyframes-name: flash;
+@keyframes-duration: 1500ms;
+@keyframes-iteration-count: 1;
+.prefix(@style, @value) {
+    -webkit-@{style}: @value;
+    -moz-@{style}: @value;
+    -ms-@{style}: @value;
+    @{style}: @value;
+}
+
+.keyframes (@prefix, @name, @content) when (@prefix=def) {
+    @keyframes @name {
+        @content();
+    }
+}
+
+.keyframes (@prefix, @name, @content) when (@prefix=moz) {
+    @-moz-keyframes @name {
+        @content();
+    }
+}
+
+.keyframes (@prefix, @name, @content) when (@prefix=o) {
+    @-o-keyframes @name {
+        @content();
+    }
+}
+
+.keyframes (@prefix, @name, @content) when (@prefix=webkit) {
+    @-webkit-keyframes @name {
+        @content();
+    }
+}
+
+.keyframes (@prefix, @name, @content) when (@prefix=all) {
+    .keyframes(moz, @name, @content);
+    .keyframes(o, @name, @content);
+    .keyframes(webkit, @name, @content);
+    .keyframes(def, @name, @content);
+}
+
+.highlight(@prefix, @keyframes-name, @highlight-color) {
+    .keyframes(@prefix, @keyframes-name, {
+        0% {
+            background-color: @highlight-color;
+            opacity: 1;
+        }
+        100% {
+            background-color: transparent;
+        }
+    }
+    );
+}
+
+.highlight(all, @keyframes-name, #2d8cf0);
+.highlight td {
+    .prefix(animation-name, @keyframes-name);
+    .prefix(animation-duration, @keyframes-duration);
+    .prefix(animation-iteration-count, @keyframes-iteration-count);
+    .prefix(animation-timing-function, ease-in-out);
+}
+
+.cell-td-expand {
+    transition: -webkit-transform .2s ease-in-out;
+    transition: transform .2s ease-in-out;
+    transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+}
+
+.cell-td-expand-expanded {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}

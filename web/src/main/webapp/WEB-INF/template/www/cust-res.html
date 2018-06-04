@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>客户绑定</title>
+    #include("/WEB-INF/template/www/css.html")
+    #include("/WEB-INF/template/www/js.html")
+
+</head>
+
+<body>
+<input type="hidden" id="ctx" value="#(ctx)">
+<div class="container">
+    <form class="form-signin"  action >
+        <h3 class="form-signin-heading">银行卡绑定结果</h3>
+        #if(resCode=='error')
+        <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            #(resMsg)
+        </div>
+        #end
+        #if(resCode=='success')
+        <div class="alert alert-success" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            #(resMsg)
+        </div>
+        #end
+
+
+        <button class="btn btn-lg btn-primary btn-block" type="button" onclick="javascript:history.back(-1);">返回</button>
+    </form>
+</div> <!-- /container -->
+
+</body>
+</html>
+

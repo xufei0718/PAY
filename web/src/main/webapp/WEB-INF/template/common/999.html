@@ -1,0 +1,35 @@
+#@layout()
+#define content()
+
+<style type="text/css">
+    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
+    div.dialog {
+        padding: 4em;
+        margin-top: 4em;
+        margin-bottom: 4em;
+        border: 1px dashed #eee;
+        background-color: #F6F9FC
+        /*border-right-color: #999;*/
+        /*border-bottom-color: #999;*/
+    }
+    h1 { font-size: large; color: #000; line-height: 2.5em; }
+    div.dialog p{
+        line-height: 2.5em;
+        color: #ff0000;
+        font-size: medium;
+    }
+</style>
+<div  class="container-fluid" style="padding-top: 55px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 dialog" >
+
+                <h1>业务数据错误</h1>
+                <p >#(_err_msg)</p>
+                <a class="btn btn-info " href="#(ctx)/index">返回首页</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+#end

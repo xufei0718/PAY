@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>客户绑定</title>
+    #include("/WEB-INF/template/www/css.html")
+    #include("/WEB-INF/template/www/js.html")
+</head>
+
+<body>
+<input type="hidden" id="ctx" value="#(ctx)">
+<div class="container">
+    <form id="custForm" role="form" class="form-signin" method="post" action="/mer01/addCust/" enctype="multipart/form-data">
+        <h3 class="form-signin-heading">客户银行卡绑定</h3>
+        <div class="form-group">
+            <label>商户名称</label>
+            <input type="hidden" name="merNo" value="#(merchantInfo.merchantNo)">
+            <div style="font-size:14px;margin-bottom: 10px; margin-left: 12px">#(merchantInfo.merchantName)</div>
+        </div>
+        <div class="form-group">
+            <label>客户姓名</label>
+            <input type="text" class="form-control" placeholder="客户姓名" name="custName">
+        </div>
+        <div class="form-group">
+            <label>身份证号</label>
+            <input type="text" class="form-control" placeholder="身份证号" name="cardID">
+        </div>
+        <div class="form-group">
+            <label>银行预留手机号</label>
+            <input type="text" id ="mobile" class="form-control" placeholder="银行预留手机号" name="mobileBank">
+        </div>
+        <div class="form-group">
+            <label>银行卡号</label>
+            <input type="text" class="form-control" placeholder="银行卡号" name="bankcardNo">
+        </div>
+        <div class="form-group">
+            <div class="file-container"  style="display:inline-block;position:relative;overflow: hidden;vertical-align:middle">
+                <button   class="btn btn-primary " type="button" style="height: 44px; width: 240px ;margin-left: 30px;"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> 选择身份证正面照片<span id="cardImgZTxt"></span></button>
+                <input type="file"  name="cardImgZ" accept="image/*"   onchange="$('#cardImgZTxt').html('（已上传）')" style="position:absolute;top:0;left:0;font-size:34px; opacity:0">
+            </div>
+
+        </div>
+        <div class="form-group">
+                <div class="file-container"  style="display:inline-block;position:relative;overflow: hidden;vertical-align:middle">
+                    <button class="btn btn-primary " type="button" style="height: 44px; width: 240px;margin-left: 30px"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> 选择本人现场照片<span id="selfImgTxt"></span></button>
+                    <input type="file" name="selfImg" accept="image/*"   onchange="$('#selfImgTxt').html('（已上传）')" style="position:absolute;top:0;left:0;font-size:34px; opacity:0">
+                </div>
+
+        </div>
+        <div class="form-group">
+            <div class="file-container"  style="display:inline-block;position:relative;overflow: hidden;vertical-align:middle">
+                <button class="btn btn-primary " type="button" style="height: 44px; width: 240px;margin-left: 30px"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> 选择代扣授权书照片<span id="authImgTxt"></span></button>
+                <input type="file" name="authImg" accept="image/*"   onchange="$('#authImgTxt').html('（已上传）')" style="position:absolute;top:0;left:0;font-size:34px; opacity:0">
+            </div>
+
+        </div>
+        <div class="form-group" align="center">
+            <label></label>
+            <input type="checkbox" name="is"> <a href="/mer01/custAgree?merNo=#(merchantInfo.merchantNo)" >已阅读并同意《迈伴客用户使用协议》</a>
+
+        </div>
+        <!--<div class="form-group">-->
+            <!--<label></label>-->
+            <!--<input type="text" class="form-control" style="width: 140px; float: left" placeholder="验证码" name="code">-->
+            <!--<button id="sendCode" type="button" class="btn btn-primary " style="height: 44px;width: 155px">发送验证码</button>-->
+
+        <!--</div>-->
+
+        <!--<div id="sendCodeTxt" style="margin-bottom: 10px"></div>-->
+        <button id="formBtn" name="formBtn" class="btn btn-lg btn-primary btn-block" type="submit">绑定</button>
+    </form>
+</div> <!-- /container -->
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        /**
+         * 下面是进行插件初始化
+         * 你只需传入相应的键值对
+         * */
+        $('#custForm').bootstrapValidator({
+            message: '',
+            feedbackIcons: {
+                /*输入框不同状态，显示图片的样式*/
+                // valid: 'glyphicon glyphicon-ok',
+                // invalid: 'glyphicon glyphicon-remove',
+                // validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+
+                custName: {
+                    validators: {
+                        notEmpty: {
+                            /*非空提示*/
+                            message: '客户姓名不能为空'
+                        },
+
+                    }
+                },
+
+                cardID: {
+                    validators: {
+                        notEmpty: {
+                            /*非空提示*/
+                            message: '身份证号不能为空'
+                        },
+                        regexp: {//正则验证
+                            regexp: '(^\\d{15}$)|(^\\d{18}$)|(^\\d{17}(\\d|X|x)$)',
+                            message: '所输入身份证号不正确'
+                        },
+
+                    }
+                },
+                mobileBank: {
+                    validators: {
+                        notEmpty: {
+                            message: '银行预留手机号不能为空'
+                        },
+                        regexp: {//正则验证
+                            regexp: '^1\\d{10}$',
+                            message: '银行预留手机号不正确'
+                        },
+                    }
+                },
+                bankcardNo: {
+                    validators: {
+                        notEmpty: {
+                            message: '银行卡号不能为空'
+                        },
+                    }
+
+                },
+                cardImgZ: {
+                    validators: {
+                        notEmpty: {
+                            message: '身份证正面照片不能为空'
+                        },
+
+                    }
+                },
+                selfImg: {
+                    validators: {
+                        notEmpty: {
+                            message: '手持身份证照片不能为空'
+                        },
+
+                    }
+                },
+                authImg: {
+                    validators: {
+                        notEmpty: {
+                            message: '代扣授权书照片不能为空'
+                        },
+
+                    }
+                },
+                is: {
+                    validators: {
+                        notEmpty: {
+                            message: '需要同意用户使用协议'
+                        },
+                    }
+
+                },
+                // code: {
+                //     validators: {
+                //         notEmpty: {
+                //             message: '短信验证码不能为空'
+                //         },
+                //     }
+                //
+                // },
+            },
+
+
+        });
+
+        $("#custForm").bootstrapValidator('destroy');
+
+        //提交的时候代码组合
+        $('#custForm').data('bootstrapValidator').validate();
+        if (!$('#custForm').data('bootstrapValidator').isValid()) {
+            return false;
+        }
+
+
+
+    });
+
+
+    var InterValObj;
+    //timer变量，控制时间
+    var count = 60;//间隔函数，1秒执行
+    var curCount;//当前剩余秒数
+
+
+    //按钮单击时执行
+    $("#sendCode").click(function(){
+        var mobile=$("#mobile").val();
+        if(mobile==''){
+            $("#mobile").focus();
+            alert("请输入银行预留手机号")
+
+            return false;
+        }
+
+        curCount = count; // 设置button效果，开始计时
+        $("#sendCode").attr("disabled","true" );//设置按钮为禁用状态
+        console.info(  $("#sendCode").val())
+        $("#sendCode").html( + curCount + "秒后重新发送");//更改按钮文字
+        InterValObj = window.setInterval(SetRemainTime, 1000); // 启动计时器timer处理函数，1秒执行一次 // 向后台发送处理数据
+
+        $.post("/mer01/sendCode",{mobile:mobile}, function(data) {
+            if(data == 0){
+                $("#sendCodeTxt").html("<font color='#339933'>短信验证码已发到您的手机,请查收</font>");
+            }else if(data == 1){
+                $("#sendCodeTxt").html("<font color='red'>短信验证码发送失败，请重新发送</font>");
+            }
+        }).fail(function() {
+            $("#sendCodeTxt").html("<font color='red'>短信验证码发送失败，请重新发送</font>");
+            });
+    });
+
+    //timer处理函数
+    function SetRemainTime() {
+        if (curCount == 0) {
+            window.clearInterval(InterValObj);// 停止计时器
+            $("#sendCode").removeAttr("disabled");//移除禁用状态改为可用
+            $("#sendCode").html( "重新发送验证码");//更改按钮文字
+        }else {
+            curCount--;
+            $("#sendCode").html( + curCount + "秒后重新发送");//更改按钮文字
+        }
+    }
+
+
+</script>
+
+
+</body>
+</html>
+

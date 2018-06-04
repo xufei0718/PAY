@@ -1,0 +1,43 @@
+操作员： 您好。这是  #(title??'') 清分数据。系统邮件，无须回复！<br>
+<table style="width: 100%;font-size: .938em;border-collapse: collapse;">
+    <thead>
+    <tr>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">商户编号</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">商户名称</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">清分日期</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">交易笔数</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">交易金额</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">手续费</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">出账金额</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">清分卡号</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">户名</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">开户行</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">行号</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">预留手机号</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">出账前预存余额</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">出账后预存余额</th>
+        <th style="text-align: left;padding: .5em .5em;font-weight: bold;background: #66677c;color: #fff;border:1px solid #0094ff; ">代缴手续费</th>
+    </tr>
+    </thead>
+    <tbody>
+    #for(x:list)
+    <tr>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(x.merNo??'')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(x.merName??'')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(x.clearDate??'')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(x.tradeCount??'0')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(x.amountSum??'0')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(x.amountFeeSum??'0')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(x.amountOff??'0')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(x.bankNo??'')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(x.bankAccountName??'')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(x.bankName??'')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(x.bankCode??'')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(x.bankPhone??'')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(x.mfar.bAmount??'')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(x.mfar.aAmount??'')</td>
+        <td style="padding: .5em .5em;border-bottom: solid 1px #ccc;border:1px solid #0094ff; ">#(x.mfar.amount??'')</td>
+    </tr>
+    #end
+    </tbody>
+</table>

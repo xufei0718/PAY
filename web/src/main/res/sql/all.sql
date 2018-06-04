@@ -1,0 +1,21 @@
+#namespace("collection_clear")
+  #include("collection_clear.sql")
+#end
+#namespace("collection_entrust")
+  #include("collection_entrust.sql")
+#end
+#namespace("merchant")
+  #include("merchant.sql")
+#end
+#namespace("collection_trade")
+  #include("collection_trade.sql")
+#end
+#namespace("collection_batch")
+  #include("collection_batch.sql")
+#end
+#namespace("collection_api")
+  #include("collection_api.sql")
+#end
+#namespace("merchantFeeAmountRecord")
+  #include("merchant_fee_amount_record.sql")
+#end
